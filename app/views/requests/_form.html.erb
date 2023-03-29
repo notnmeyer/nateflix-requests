@@ -1,0 +1,20 @@
+<%= form_with scope: :request, url: requests_path do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label "type" %>
+    <%= form.select :media_type, ["tv", "movie"], selected: "tv" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

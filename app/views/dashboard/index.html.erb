@@ -1,0 +1,19 @@
+<div id="requests">
+  <h2>Requests</h2>
+  <%= render partial: 'requests/form', locals: { request: @request } %>
+  
+  <ul>
+    <% @requests.each do |request| %>
+      <li>
+        <%= request.title %> (<%= request.media_type %>) (status: <%= request.status %>)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="issues">
+  <h2>Issues</h2>
+  <ul>
+    <li>not implemented</li>
+  </ul>
+</div>
