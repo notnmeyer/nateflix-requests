@@ -19,19 +19,17 @@ html {
 }
 
 body {
-  padding: 0 20px;
   background-color: #f0f1ff !important;
 }
 
-#nav {
-  list-style-type: none;
-  margin: 0;
-  float: right;
+nav.navbar {
+  background-color: #5f105f !important;
+  padding: 32px 32px;
+  border-bottom: 1px solid #ccc;
 }
 
-#nav li {
-  display: inline;
-  margin: 5px;
+nav a.navbar-brand {
+  font-size: 48px;
 }
 
 #actions ul {
@@ -64,13 +62,20 @@ span.title {
 
 form {
   /* background-color: rgb(255, 255, 255); */
-  padding: 20px;
+  padding: 24px;
 }
 
-#issues, #requests {
-  margin: 25px 0;
+#requests, #issues {
+  margin: 16px 32px;
+}
+
+.request-container, .issue-container {
+  margin-bottom: 32px
 }
 
 #new_issue_form, #new_request_form {
-  border: 1px solid #ccc;
+  border: 3px solid #5f105f;
+  background-color: #dfcedf;
+  border-radius: 5px;
+  padding: 16px;
 }
