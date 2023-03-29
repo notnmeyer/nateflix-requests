@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_admin!, only: [:destroy, :update, :edit]
-  
+  before_action :authenticate_user!
+  before_action :authenticate_admin!, only: %i[destroy update edit]
+
   def index
     @requests = Request.all
   end
@@ -12,24 +13,24 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
-      redirect_to root_path, notice: "Request was successfully created."
+      redirect_to root_path, notice: 'Request was successfully created.'
     else
-      redirect_to root_path, alert: "There was a problem submitting your request."
+      redirect_to root_path, alert: 'There was a problem submitting your request.'
     end
   end
 
   def destroy
     @request = Request.find(params[:id])
     @request.destroy
-    redirect_to root_path, notice: "Request was successfully deleted."
+    redirect_to root_path, notice: 'Request was successfully deleted.'
   end
 
   def update
     @request = Request.find(params[:id])
     if @request.update(request_params)
-      redirect_to root_path, notice: "Request was successfully updated."
+      redirect_to root_path, notice: 'Request was successfully updated.'
     else
-      redirect_to root_path, alert: "There was a problem updating your request."
+      redirect_to root_path, alert: 'There was a problem updating your request.'
     end
   end
 
@@ -38,7 +39,8 @@ class RequestsController < ApplicationController
   end
 
   private
-    def request_params
-      params.require(:request).permit(:title, :media_type, :notes, :status)
-    end
+
+  def request_params
+    params.require(:request).permit(:title, :media_type, :notes, :status)
+  end
 end

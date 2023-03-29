@@ -42,22 +42,27 @@ p.notice, p.alert {
   padding: 0; margin: 0;
 }
 
-p.notice {
+.notice {
   color: green;
 }
 
-p.alert {
+.alert {
   color: red;
 }
 
-.pending {
+.pending, .reported {
   color: orange;
 }
 
-.filled {
+.filled, .wontfix, .resolved {
   color: green;
 }
 
 span.title {
   font-weight: bold;
+}
+
+form {
+  background-color: rgb(209, 209, 209);
+  padding: 20px;
 }

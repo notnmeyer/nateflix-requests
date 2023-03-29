@@ -1,0 +1,33 @@
+<%= form_with(model: issue ) do |form| %>
+  <% if issue.errors.any? %>
+    <div class="alert">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+        <% issue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.text_area :notes, class: "form-control" %>
+    <small id="notesHelp" class="form-text text-muted">Provide any relevant details like season and episode numbers, etc.</small>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, %i[reported resolved wontfix], {}, {selected: "reported", class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit(class: "form-control") %>
+  </div>
+<% end %>

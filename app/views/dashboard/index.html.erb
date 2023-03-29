@@ -1,18 +1,10 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Requests</h2>
-  </div>
-  
-  <div class="col-md-4">
-    <h2>Request something</h2>
-  </div>
-</div>
-
 <div id="requests" class="row">
   <div class="col-md-6">
-    <%= render partial: "requests/list_requests", locals: { request: @request } %>
+    <h2>Requests</h2>
+    <%= render partial: "requests/list_requests" %>
   </div>
   <div id="new_request_form" class="col-md-4">
+    <h2>Request something</h2>
     <%= render partial: "requests/form", locals: { request: @request } %>
   </div>
 </div>
@@ -20,8 +12,10 @@
 <div id="issues" class="row">
   <div class="col-md-6">
     <h2>Issues</h2>
-    <ul>
-      <li>not implemented</li>
-    </ul>
+    <%= render partial: "issues/list" %>
+  </div>
+  <div id="new_issue_form" class="col-md-4">
+    <h2>Complain here</h2>
+    <%= render partial: "issues/form", locals: { issue: @issue } %>
   </div>
 </div>
