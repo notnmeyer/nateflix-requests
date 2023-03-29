@@ -1,19 +1,42 @@
-<div id="requests">
-  <h2>Requests</h2>
-  <%= render partial: 'requests/form', locals: { request: @request } %>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Requests</h2>
+  </div>
   
-  <ul>
-    <% @requests.each do |request| %>
-      <li>
-        <%= request.title %> (<%= request.media_type %>) (status: <%= request.status %>)
-      </li>
-    <% end %>
-  </ul>
+  <div class="col-md-4">
+    <h2>Request something</h2>
+  </div>
 </div>
 
-<div id="issues">
-  <h2>Issues</h2>
-  <ul>
-    <li>not implemented</li>
-  </ul>
+<div id="requests" class="row">
+  <div class="col-md-6">
+    <% @requests.each do |request| %>
+      <div class="row table-striped">
+        <div class="col-md-6">
+          <span class="title"><%= request.title %></span>
+          (<%= request.media_type %>)
+          (<span class="<%= request.status %>"><%= request.status %></span>)
+        </div>
+        <% if signed_in?(:admin) %>
+        <div class="col-md-6">
+          <%= link_to "edit", edit_request_path(request) %>
+          <%= link_to "delete", request_path(request), data: { turbo_method: :delete } %>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="new_request_form" class="col-md-4">
+    <%= render partial: "requests/form", locals: { request: @request } %>
+  </div>
+</div>
+
+<div id="issues" class="row">
+  <div class="col-md-6">
+    <h2>Issues</h2>
+    <ul>
+      <li>not implemented</li>
+    </ul>
+  </div>
 </div>

@@ -1,0 +1,20 @@
+<%= form_with model: request do |form| %>
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :media_type %>
+    <%= form.select :media_type, ["tv", "movie"], {}, {selected: @request.media_type, class: "form-control"} %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :status %>
+    <%= form.select :status, ["pending", "filled"], {}, {selected: @request.status, class: "form-control"} %>
+  </div>
+
+  <div class="actions form-group">
+    <%= form.submit(class: "form-control") %>
+  </div>
+<% end %>
