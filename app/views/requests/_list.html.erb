@@ -4,6 +4,7 @@
       <span class="title"><%= request.title %></span>
       (<%= request.media_type %>)
       (<span class="<%= request.status %>"><%= request.status %></span>)
+      <p class="notes"><%= request.notes %></p>
     </div>
     <% if signed_in?(:admin) %>
     <div class="col-md-6">
