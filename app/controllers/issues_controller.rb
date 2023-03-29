@@ -28,8 +28,9 @@ class IssuesController < ApplicationController
         format.html { redirect_to root_url(@issue), notice: 'Issue was successfully created.' }
         format.json { render :show, status: :created, location: @issue }
       else
-        format.html { redirect_to root_url(@issue), notice: @issue.errors.full_messages }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
+        format.html do
+          redirect_to root_url, alert: "Problem(s) creating issue: #{@issue.errors.full_messages}"
+        end
       end
     end
   end

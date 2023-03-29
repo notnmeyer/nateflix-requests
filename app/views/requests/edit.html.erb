@@ -2,6 +2,8 @@
 
 <%= render "form_admin", request: @request %>
 
+<br>
+
 <div>
   <%= link_to "Back to dashboard", root_url %> |
   <%= link_to "Delete", @request, data: { turbo_method: :delete } %>

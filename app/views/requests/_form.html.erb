@@ -1,7 +1,16 @@
-<%= form_with(
-    model: request,
-    url: requests_path,
-) do |form| %>
+<%= form_with(model: request) do |form| %>
+  <% if request.errors.any? %>
+    <div class="alert">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control" %>
@@ -10,8 +19,7 @@
   <div class="field form-group">
     <%= form.label :notes %>
     <%= form.text_area :notes, class: "form-control" %>
-    <small id="notesHelp" class="form-text text-muted">Provide any relevant details like a show's season, or a
-    movie's year if it's a remake, etc.</small>
+    <small id="notesHelp" class="form-text text-muted">Provide any relevant details like a show's season, or a movies year if it's a remake, etc.</small>
   </div>
 
   <div class="field form-group">

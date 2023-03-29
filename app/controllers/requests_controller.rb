@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  before_action :set_request, only: %i[show edit update destroy]
   before_action :authenticate_user!
   before_action :authenticate_admin!, only: %i[destroy update edit]
 
@@ -6,41 +7,48 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
+  def show; end
+
   def new
     @request = Request.new
   end
 
   def create
     @request = Request.new(request_params)
+
     if @request.save
       redirect_to root_path, notice: 'Request was successfully created.'
     else
-      redirect_to root_path, alert: 'There was a problem submitting your request.'
+      redirect_to root_url, alert: "Problem(s) creating request: #{@request.errors.full_messages}"
     end
   end
 
   def destroy
-    @request = Request.find(params[:id])
     @request.destroy
     redirect_to root_path, notice: 'Request was successfully deleted.'
   end
 
   def update
-    @request = Request.find(params[:id])
-    if @request.update(request_params)
-      redirect_to root_path, notice: 'Request was successfully updated.'
-    else
-      redirect_to root_path, alert: 'There was a problem updating your request.'
+    respond_to do |format|
+      if @request.update(request_params)
+        format.html { redirect_to root_url(@request), notice: 'Request was successfully updated.' }
+        format.json { render :show, status: :ok, location: @request }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def edit
-    @request = Request.find(params[:id])
-  end
+  def edit; end
 
   private
 
   def request_params
     params.require(:request).permit(:title, :media_type, :notes, :status)
+  end
+
+  def set_request
+    @request = Request.find(params[:id])
   end
 end
