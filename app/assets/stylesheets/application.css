@@ -63,6 +63,14 @@ span.title {
 }
 
 form {
-  background-color: rgb(209, 209, 209);
+  /* background-color: rgb(255, 255, 255); */
   padding: 20px;
+}
+
+#issues, #requests {
+  margin: 25px 0;
+}
+
+#new_issue_form, #new_request_form {
+  border: 1px solid #ccc;
 }

@@ -10,6 +10,11 @@
   </div>
 
   <div class="field form-group">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
     <%= form.label :status %>
     <%= form.select :status, ["pending", "filled"], {}, {selected: @request.status, class: "form-control"} %>
   </div>

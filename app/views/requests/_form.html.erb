@@ -8,6 +8,13 @@
   </div>
 
   <div class="field form-group">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, class: "form-control" %>
+    <small id="notesHelp" class="form-text text-muted">Provide any relevant details like a show's season, or a
+    movie's year if it's a remake, etc.</small>
+  </div>
+
+  <div class="field form-group">
     <%= form.select :media_type, ["tv", "movie"], {}, {selected: "tv", class: "form-control"} %>
   </div>
 
