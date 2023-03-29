@@ -13,8 +13,8 @@
 
   <body>
     <ul id="nav">
-      <li><%= link_to "home", root_path %></li>
       <% if signed_in? %>
+        <li><%= current_user.email %> (<%= admin_signed_in? ? "admin" : "user" %>) </li>
         <li><%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete } %></li>
       <% else %>
         <li><%= link_to "login", new_user_session_path %></li>
@@ -22,7 +22,7 @@
       <% end %>
     </ul>
     
-    <h1>Nateflix Requests</h1>
+    <h1><%= link_to "Nateflix Requests", root_url %></h1>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
