@@ -10,23 +10,8 @@
 
 <div id="requests" class="row">
   <div class="col-md-6">
-    <% @requests.each do |request| %>
-      <div class="row table-striped">
-        <div class="col-md-6">
-          <span class="title"><%= request.title %></span>
-          (<%= request.media_type %>)
-          (<span class="<%= request.status %>"><%= request.status %></span>)
-        </div>
-        <% if signed_in?(:admin) %>
-        <div class="col-md-6">
-          <%= link_to "edit", edit_request_path(request) %>
-          <%= link_to "delete", request_path(request), data: { turbo_method: :delete } %>
-        </div>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: "requests/list_requests", locals: { request: @request } %>
   </div>
-
   <div id="new_request_form" class="col-md-4">
     <%= render partial: "requests/form", locals: { request: @request } %>
   </div>
