@@ -1,16 +1,20 @@
-<% @issues.each do |issue| %>
-  <div class="row table-striped">
-    <div class="col-md-6">
-      <span class="title"><%= issue.title %></span>
-      (<span class="<%= issue.status %>"><%= issue.status %></span>)
-      <br>
-      <p class="notes"><%= issue.notes %></p>
-    </div>
-    <% if signed_in?(:admin) %>
-    <div class="col-md-6">
-      <%= link_to "edit", edit_issue_path(issue) %>
-      <%= link_to "delete", issue_path(issue), data: { turbo_method: :delete } %>
-    </div>
-    <% end %>
-  </div>
-<% end %>
+<ul class="list-group">
+  <% @issues.each do |issue| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-9">
+          <span class="title"><%= issue.title %></span>
+          (<span class="<%= issue.status %>"><%= issue.status %></span>)
+          <br>
+          <p class="notes"><%= issue.notes %></p>
+        </div>
+        <% if signed_in?(:admin) %>
+        <div class="col-md-3">
+          <%= link_to "edit", edit_issue_path(issue) %>
+          <%= link_to "delete", issue_path(issue), data: { turbo_method: :delete } %>
+        </div>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>

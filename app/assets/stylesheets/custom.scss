@@ -1,0 +1,75 @@
+$body-bg: #f0f1ff;
+$body-color: #111;
+
+@import "bootstrap";
+
+nav.navbar {
+  background-color: $purple-600 !important;
+  padding: .5rem 2.5rem;
+}
+
+nav a.navbar-brand {
+  font-size: 1rem;
+}
+
+#actions ul {
+  list-style-type: none;
+}
+
+p.notice,
+p.alert {
+  padding: 0;
+  margin: 0;
+}
+
+.notice {
+  color: $green-600;
+}
+
+.alert {
+  color: $red-600;
+}
+
+.pending,
+.reported {
+  color: $orange-600;
+}
+
+.filled,
+.resolved {
+  color: $green-600;
+}
+
+.wontfix {
+  color: $red-600;
+}
+
+span.title {
+  font-weight: bold;
+}
+
+form {
+  padding: 1.5rem;
+}
+
+#requests,
+#issues,
+#messages {
+  margin: 1rem 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card {
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+
+.card-body {
+  padding-left: 1.5rem;
+}
+
+.list-group-item {
+  border-radius: 0;
+}

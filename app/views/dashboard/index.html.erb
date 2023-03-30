@@ -1,21 +1,29 @@
 <div id="requests" class="row">
-  <div class="request-container col-md-6">
-    <h2>Requests</h2>
-    <%= render partial: "requests/list" %>
+  <div class="request-container card col-md-6">
+    <h3 class="card-header">Requests</h3>
+    <div class="card-body">
+      <%= render partial: "requests/list" %>
+    </div>
   </div>
-  <div id="new_request_form" class="col-md-6   request-container">
-    <h2>Request something</h2>
-    <%= render partial: "requests/form", locals: { request: @request } %>
+  <div id="new_request_form" class="card col-md-6 request-container">
+    <h3 class="card-header">Request something</h3>
+    <div class="card-body">
+      <%= render partial: "requests/form", locals: { request: @request } %>
+    </div>
   </div>
 </div>
 
 <div id="issues" class="row">
-  <div class="col-md-6 issue-container">
-    <h2>Issues</h2>
-    <%= render partial: "issues/list" %>
+  <div class="col-md-6 card issue-container">
+    <h3 class="card-header">Issues</h3>
+    <div class="card-body">
+      <%= render partial: "issues/list" %>
+    </div>
   </div>
-  <div id="new_issue_form" class="col-md-6 issue-container">
-    <h2>Complain here</h2>
-    <%= render partial: "issues/form", locals: { issue: @issue } %>
+  <div id="new_issue_form" class="card col-md-6 issue-container">
+    <h3 class="card-header">Complain here</h3>
+    <div class="card-body">
+      <%= render partial: "issues/form", locals: { issue: @issue } %>
+    </div>
   </div>
 </div>
