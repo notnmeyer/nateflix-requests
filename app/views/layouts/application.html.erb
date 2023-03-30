@@ -19,8 +19,8 @@
             <li class="navbar-text text-light "><%= current_user.email %> (<%= admin_signed_in? ? "admin" : "user" %>)</li>
             <li class="nav-item"><%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link text-primary" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to "login", new_user_session_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "admin", new_admin_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "login", new_user_session_path, class: "nav-link text-light" %></li>
+          <li class="nav-item"><%= link_to "admin", new_admin_session_path, class: "nav-link text-light" %></li>
         <% end %>
       </ul>
     </nav>
