@@ -24,12 +24,12 @@ body {
 
 nav.navbar {
   background-color: #5f105f !important;
-  padding: 32px 32px;
+  padding: 1rem;
   border-bottom: 1px solid #ccc;
 }
 
 nav a.navbar-brand {
-  font-size: 48px;
+  font-size: 2rem;
 }
 
 #actions ul {
@@ -62,20 +62,20 @@ span.title {
 
 form {
   /* background-color: rgb(255, 255, 255); */
-  padding: 24px;
+  padding: 1.5rem;
 }
 
 #requests, #issues {
-  margin: 16px 32px;
+  margin: 1rem 2rem;
 }
 
 .request-container, .issue-container {
-  margin-bottom: 32px
+  margin-bottom: 2rem
 }
 
 #new_issue_form, #new_request_form {
   border: 3px solid #5f105f;
   background-color: #dfcedf;
-  border-radius: 5px;
-  padding: 16px;
+  border-radius: .25rem;
+  padding: 1rem;
 }
