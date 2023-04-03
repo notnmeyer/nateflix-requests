@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  type: 
-  notes: MyText
+ghostbusters:
+  title: Ghostbusters
+  media_type: movie
+  notes: the original one
 
-two:
-  title: MyString
-  type: 
-  notes: MyText
+always_sunny:
+  title: It's Always Sunny in Philadelphia
+  media_type: tv
+  notes: season 1

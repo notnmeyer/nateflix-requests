@@ -104,6 +104,13 @@ GEM
       rails
     erubi (1.12.0)
     execjs (2.8.1)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.1.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -131,6 +138,12 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    minitest-rails (7.0.0)
+      minitest (~> 5.10)
+      railties (~> 7.0.0)
+    minitest-rails-capybara (0.0.2)
+      capybara
+      minitest-rails
     msgpack (1.7.0)
     net-imap (0.3.4)
       date
@@ -252,8 +265,12 @@ DEPENDENCIES
   debug
   devise (~> 4.9.0)
   dockerfile-rails (>= 1.2)
+  factory_bot_rails
+  faker
   importmap-rails
   jbuilder
+  minitest-rails
+  minitest-rails-capybara
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   sassc-rails

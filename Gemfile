@@ -71,6 +71,11 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  # minitest
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
 end
 
 gem 'dockerfile-rails', '>= 1.2', group: :development
