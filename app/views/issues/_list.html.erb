@@ -2,14 +2,17 @@
   <% @issues.each do |issue| %>
     <li class="list-group-item">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-6">
           <span class="title"><%= issue.title %></span>
           (<span class="<%= issue.status %>"><%= issue.status %></span>)
           <br>
           <p class="notes"><%= issue.notes %></p>
         </div>
+        <div class="col-md-4">
+          <small class="text-muted"><%= time_ago_in_words(issue.created_at) %> ago</small>
+        </div>
         <% if user_signed_in? && current_user.admin? %>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <%= link_to "edit", edit_issue_path(issue) %>
           <%= link_to "delete", issue_path(issue), data: { turbo_method: :delete } %>
         </div>
