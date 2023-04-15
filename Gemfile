@@ -76,6 +76,7 @@ group :test do
   gem 'faker'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
+  gem 'rails-controller-testing'
 end
 
 gem 'dockerfile-rails', '>= 1.2', group: :development
