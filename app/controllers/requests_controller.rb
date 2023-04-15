@@ -14,7 +14,8 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
+    @user = User.find(current_user.id)
+    @request = @user.requests.new(request_params)
 
     if @request.save
       redirect_to root_path, notice: 'Request was successfully created.'
