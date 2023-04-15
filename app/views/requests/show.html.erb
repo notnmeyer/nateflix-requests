@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div id="requests" class="row">
+  <div class="request-container card col-md-12">
+    <p style="color: green"><%= notice %></p>
 
-<%= render @request %>
+    <div class="card-body">
+      <%= render @request %>
 
-<div>
-  <%= link_to "Edit this request", edit_request_path(@request) %> |
-  <%= link_to "Back to requests", requests_path %>
+      <div>
+        <%= link_to "Edit this request", edit_request_path(@request) %> |
+        <%= link_to "Back to requests", requests_path %>
 
-  <%= button_to "Destroy this request", @request, method: :delete %>
+        <%= button_to "Destroy this request", @request, method: :delete %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -3,7 +3,7 @@
 <ul>
   <% @requests.each do |request| %>
     <li>
-      <%= link_to request.title, requests_path(request) %>
+      <%= link_to request.title, request_path(request) %>
     </li>
   <% end %>
 </ul>

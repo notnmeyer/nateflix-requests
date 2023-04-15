@@ -2,8 +2,11 @@
   <div class="request-container card col-md-6">
     <h3 class="card-header">Requests</h3>
     <div class="card-body">
-      <p class="text-muted">Showing all pending requests and filled requests &lt;<%= @requests_cutoff_days %> days old.</p>
       <%= render partial: "requests/list" %>
+      <small class="text-muted">
+        Showing all pending requests and filled requests &lt;<%= @requests_cutoff_days %> days old.
+        <%= link_to "History", :requests %>
+      </small>
     </div>
   </div>
   <div id="new_request_form" class="card col-md-6 request-container">
