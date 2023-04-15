@@ -1,13 +1,8 @@
 class ApplicationController < ActionController::Base
-  def current_user
-    return current_admin if admin_signed_in?
+  def check_admin
+    return if current_user.admin?
 
-    super
-  end
-
-  def authenticate_user!
-    return if admin_signed_in?
-
-    super
+    flash[:alert] = 'You are not authorized to perform this action.'
+    redirect_to(root_path)
   end
 end
