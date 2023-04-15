@@ -5,12 +5,14 @@
     <div class="card-body">
       <%= render @request %>
 
-      <div>
-        <%= link_to "Edit this request", edit_request_path(@request) %> |
-        <%= link_to "Back to requests", requests_path %>
+      <% if signed_in?(:admin) %>
+        <div>
+          <%= link_to "Edit this request", edit_request_path(@request) %> |
+          <%= link_to "Back to requests", requests_path %>
 
-        <%= button_to "Destroy this request", @request, method: :delete %>
-      </div>
+          <%= button_to "Destroy this request", @request, method: :delete %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
