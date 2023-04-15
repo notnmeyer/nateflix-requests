@@ -8,7 +8,7 @@
           <br>
           <p class="notes"><%= issue.notes %></p>
         </div>
-        <% if signed_in?(:admin) %>
+        <% if user_signed_in? && current_user.admin? %>
         <div class="col-md-3">
           <%= link_to "edit", edit_issue_path(issue) %>
           <%= link_to "delete", issue_path(issue), data: { turbo_method: :delete } %>
