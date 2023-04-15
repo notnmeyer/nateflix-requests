@@ -1,11 +1,16 @@
 $body-bg: #f0f0f0;
 $body-color: #494949;
+$primary: #534277;
+$link-shade-percentage: 30%;
+$link-decoration: none;
+$link-hover-decoration: underline;
 
 @import "bootstrap";
 
 nav.navbar {
-  background-color: #684e98 !important;
-  padding: .5rem 2.5rem;
+  background-color: $primary !important;
+  color: $body-color !important;
+  padding: 0rem 2.5rem;
 }
 
 nav a.navbar-brand {
