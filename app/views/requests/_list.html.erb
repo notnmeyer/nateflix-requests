@@ -9,7 +9,9 @@
           <p class="notes"><%= request.notes %></p>
         </div>
         <div class="col-md-4">
-          <small class="text-muted"><%= time_ago_in_words(request.created_at) %> ago</small>
+          <small class="text-muted">
+            <%= time_ago_in_words(request.created_at) %> ago by <%= pretty_email request.user.email %>
+          </small>
         </div>
         <% if user_signed_in? && current_user.admin?%>
         <div class="col-md-2">
