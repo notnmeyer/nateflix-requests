@@ -1,5 +1,5 @@
 <div id="requests" class="card col-md-4">
-  <h3 class="card-header"><%= resource.model_name %> Log in</h3>
+  <h3 class="card-header">Sign in</h3>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field form-group">
       <%= f.label :email %><br />
@@ -19,7 +19,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "form-control btn btn-primary" %>
+      <%= f.submit "Sign in", class: "form-control btn btn-primary" %>
     </div>
   <% end %>
 </div>
