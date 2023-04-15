@@ -1,23 +1,32 @@
 require 'test_helper'
 
 class RequestTest < ActiveSupport::TestCase
+  setup do
+    @user = create(:user)
+    @params = { title: 'Test', notes: 'some notes', status: 'pending', media_type: 'tv', user: @user }
+  end
+
   test 'invalid without title' do
-    request = Request.new(notes: '', status: 'pending')
+    @params[:title] = nil
+    request = Request.new(@params)
     assert_not request.valid?
   end
 
   test 'notes can be blank' do
-    request = Request.new(title: 'Test', notes: '', status: 'pending', media_type: 'tv')
+    @params[:notes] = nil
+    request = Request.new(@params)
     assert request.valid?
   end
 
   test 'invalid without media_type' do
-    request = Request.new(title: 'Test', notes: '')
+    @params[:media_type] = nil
+    request = Request.new(@params)
     assert_not request.valid?
   end
 
   test 'status can be omitted' do
-    request = Request.new(title: 'Test', notes: '', media_type: 'tv')
+    @params = @params.except :status
+    request = Request.new(@params)
     assert request.valid?
 
     request.save
