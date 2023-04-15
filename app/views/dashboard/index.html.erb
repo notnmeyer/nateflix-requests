@@ -2,6 +2,7 @@
   <div class="request-container card col-md-6">
     <h3 class="card-header">Requests</h3>
     <div class="card-body">
+      <p class="text-muted">Showing all pending requests and filled requests &lt;<%= @requests_cutoff_days %> days old.</p>
       <%= render partial: "requests/list" %>
     </div>
   </div>
