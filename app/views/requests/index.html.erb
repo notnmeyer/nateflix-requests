@@ -1,14 +1,33 @@
 <div id="requests" class="row">
   <div class="request-container card col-md-12">
-    <h3 class="card-header">Requests</h3>
+    <h3 class="card-header">Request History</h3>
     <div class="card-body">
-      <ul>
-        <% @requests.each do |request| %>
-          <li>
-            <%= link_to request.title, request_path(request) %>
-          </li>
-        <% end %>
-      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Requestor</th>
+            <th scope="col">Requested</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr>
+              <td><%= link_to request.title, request_path(request) %></td>
+              <td><%= request.media_type %></td>
+              <td class="<%= request.status %>"><%= request.status %></td>
+              <td><%= pretty_email request.user.email %></td>
+              <td><%= time_ago_in_words request.created_at %> ago</td>
+              <td><%= time_ago_in_words request.updated_at %> ago</td>
+              <td><%= request.notes %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
