@@ -1,9 +1,14 @@
-<h1>Requests</h1>
-
-<ul>
-  <% @requests.each do |request| %>
-    <li>
-      <%= link_to request.title, request_path(request) %>
-    </li>
-  <% end %>
-</ul>
+<div id="requests" class="row">
+  <div class="request-container card col-md-12">
+    <h3 class="card-header">Requests</h3>
+    <div class="card-body">
+      <ul>
+        <% @requests.each do |request| %>
+          <li>
+            <%= link_to request.title, request_path(request) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
