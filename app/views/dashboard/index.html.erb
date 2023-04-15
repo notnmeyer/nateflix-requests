@@ -1,5 +1,5 @@
 <div id="requests" class="row">
-  <div class="request-container card col-md-6">
+  <div class="request-container card col-md-8">
     <h3 class="card-header">Requests</h3>
     <div class="card-body">
       <%= render partial: "requests/list" %>
@@ -9,7 +9,7 @@
       </small>
     </div>
   </div>
-  <div id="new_request_form" class="card col-md-6 request-container">
+  <div id="new_request_form" class="card col-md-4 request-container">
     <h3 class="card-header">Request something</h3>
     <div class="card-body">
       <%= render partial: "requests/form", locals: { request: @request } %>
@@ -18,13 +18,13 @@
 </div>
 
 <div id="issues" class="row">
-  <div class="col-md-6 card issue-container">
+  <div class="col-md-8 card issue-container">
     <h3 class="card-header">Issues</h3>
     <div class="card-body">
       <%= render partial: "issues/list" %>
     </div>
   </div>
-  <div id="new_issue_form" class="card col-md-6 issue-container">
+  <div id="new_issue_form" class="card col-md-4 issue-container">
     <h3 class="card-header">Complain here</h3>
     <div class="card-body">
       <%= render partial: "issues/form", locals: { issue: @issue } %>
