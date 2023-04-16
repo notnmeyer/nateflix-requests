@@ -13,12 +13,13 @@
             <%= time_ago_in_words(request.created_at) %> ago by <%= pretty_email request.user.email %>
           </small>
         </div>
-        <% if user_signed_in? && current_user.admin?%>
         <div class="col-md-2">
-          <%= link_to "edit", edit_request_path(request) %>
-          <%= link_to "delete", request_path(request), data: { turbo_method: :delete } %>
+          <% if user_signed_in? && current_user.admin?%>
+            <%= link_to "edit", edit_request_path(request) %>
+            <%= link_to "delete", request_path(request), data: { turbo_method: :delete } %>
+          <% end %>
+          <%= link_to "details", request_path(request) %>
         </div>
-        <% end %>
       </div>
     </li>
   <% end %>
