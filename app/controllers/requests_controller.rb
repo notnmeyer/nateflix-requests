@@ -7,7 +7,10 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = @request.comments
+  end
 
   def new
     @request = Request.new

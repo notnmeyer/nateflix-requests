@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :issues
-  resources :requests
+  resources :requests do
+    resources :comments, only: [:create]
+  end
 
   devise_for :users, skip: :all
   devise_scope :user do

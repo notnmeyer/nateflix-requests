@@ -1,18 +1,14 @@
 <div id="requests" class="row">
   <div class="request-container card col-md-12">
-    <p style="color: green"><%= notice %></p>
-
-    <div class="card-body">
-      <%= render @request %>
-
-      <% if user_signed_in? && current_user.admin? %>
-        <div>
-          <%= link_to "Edit this request", edit_request_path(@request) %> |
-          <%= link_to "Back to requests", requests_path %>
-
-          <%= button_to "Destroy this request", @request, method: :delete %>
-        </div>
-      <% end %>
-    </div>
+    <%= render @request %>
+  </div>
+</div>
+<div id="requests" class="row">
+  <div class="card col-md-12">
+    <h4 class="card-header">Comments</h4>
+    <%= render 'comments' %>
+  </div>
+  <div class="card col-md-12">
+    <%= render 'comment_form' %>
   </div>
 </div>

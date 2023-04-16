@@ -1,29 +1,32 @@
-<div id="<%= dom_id request %>">
-  <p>
-    <strong>Title:</strong>
-    <%= request.title %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= request.notes %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= request.status %>
-  </p>
-
-  <br>
-
-  <p>
-    <strong>Created at:</strong>
-    <%= request.created_at %>
-  </p>
-
-  <p>
-    <strong>Updated at:</strong>
-    <%= request.updated_at %>
-  </p>
-
+<div class="request-container card col-md-12">
+  <h3 class="card-header"><%= request.title %> (<%= request.media_type %>)</h3>
+  <div class="card-body">
+    <div id="requests" class="row">
+      <div class="request-container col-md-3"><strong>Status</strong></div>
+      <div class="request-container col-md-3"><strong>Created at</strong></div>
+      <div class="request-container col-md-3"><strong>Updated at</strong></div>
+      <div class="request-container col-md-3"><strong>Notes</strong></div>
+    </div>      
+    <div id="requests" class="row">
+      <div class="request-container col-md-3">
+        <span class="<%= request.status %>"><%= request.status %></span>
+      </div>
+      <div class="request-container col-md-3">
+        <%= time_ago_in_words request.created_at %>
+      </div>
+      <div class="request-container col-md-3">
+        <%= time_ago_in_words request.updated_at %>
+      </div>
+      <div class="request-container col-md-3">
+        <%= request.notes %>
+      </div>
+    </div>
+    <% if user_signed_in? && current_user.admin? %>
+      <div>
+        <%= link_to "Edit this request", edit_request_path(@request) %> |
+        <%= link_to "Back to requests", requests_path %>
+        <%= button_to "Destroy this request", @request, method: :delete %>
+      </div>
+    <% end %>
+  </div>
 </div>
