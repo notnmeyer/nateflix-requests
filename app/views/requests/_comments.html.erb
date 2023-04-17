@@ -3,9 +3,10 @@
     <div class="card-body">
       <% if @comments.count > 0 %>
         <% @comments.each do |comment| %>
-          <%= pretty_email comment.author.email %>
-          <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+          <span class="text-primary"><%= pretty_email comment.author.email %></span>
+          <small class="text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small>
           <p><%= comment.content %></p>
+          <hr>
         <% end %>
       <% else %>
         <p>No comments yet.</p>

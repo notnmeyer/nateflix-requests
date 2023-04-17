@@ -1,10 +1,9 @@
-<h4 class="card-header">Create comment</h4>
 <%= form_with(model: [ @request, @request.comments.build ], local: true) do |form| %>
     <div class="field form-group">
     <%= form.text_area :content, class: "form-control", rows: 2, required: true %>
   </div>
 
   <div class="actions form-group">
-    <%= form.submit(class: "btn btn-outline-primary") %>
+    <%= form.submit("Leave a comment", class: "btn btn-outline-primary btn-group-block w-100") %>
   </div>
 <% end %>
