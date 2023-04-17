@@ -11,6 +11,7 @@
             <th scope="col">Requestor</th>
             <th scope="col">Requested</th>
             <th scope="col">Updated</th>
+            <th scope="col">Comments</th>
             <th scope="col">Notes</th>
           </tr>
         </thead>
@@ -23,11 +24,15 @@
               <td><%= pretty_email request.user.email %></td>
               <td><%= time_ago_in_words request.created_at %> ago</td>
               <td><%= time_ago_in_words request.updated_at %> ago</td>
+              <td><%= link_to request.comments.count, request %></td>
               <td><%= request.notes %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="card-body">
+      <%= link_to "↩ Back to dashboard", dashboard_url, class: "text-primary" %>
     </div>
   </div>
 </div>
