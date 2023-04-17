@@ -8,17 +8,33 @@
           (<span class="<%= request.status %>"><%= request.status %></span>)
           <p class="notes"><%= request.notes %></p>
         </div>
-        <div class="col-md-4">
-          <small class="text-muted">
-            <%= time_ago_in_words(request.created_at) %> ago by <%= pretty_email request.user.email %>
-          </small>
+        <div class="col-md-6">
+          <ul>
+            <li class="text-muted">
+              <small>
+                Created <%= time_ago_in_words(request.created_at) %> ago by <%= pretty_email request.user.email %>
+              </small>
+            </li>
+            <li class="text-muted">
+              <% if request.comments.count > 0 %>
+                <small>
+                  Last comment <%= time_ago_in_words(request.comments.last.created_at) %> ago by <%= pretty_email request.comments.last.author.email %>.
+                </small>
+                <small><%= link_to "View comments", request_path(request) %></small>
+              <% else %>
+                <small class="text-muted">No comments.</small>
+                <small><%= link_to "Leave a comment.", request_path(request) %></small>
+              <% end %>
+            </li>
+          </ul>
         </div>
-        <div class="col-md-2">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
           <% if user_signed_in? && current_user.admin?%>
             <%= link_to "edit", edit_request_path(request) %>
             <%= link_to "delete", request_path(request), data: { turbo_method: :delete } %>
           <% end %>
-          <%= link_to "details", request_path(request) %>
         </div>
       </div>
     </li>
