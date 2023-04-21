@@ -2,34 +2,36 @@
   <div class="request-container card col-md-12">
     <h3 class="card-header">Request History</h3>
     <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Type</th>
-            <th scope="col">Status</th>
-            <th scope="col">Requestor</th>
-            <th scope="col">Requested</th>
-            <th scope="col">Updated</th>
-            <th scope="col">Comments</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @requests.each do |request| %>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= link_to request.title, request_path(request) %></td>
-              <td><%= request.media_type %></td>
-              <td class="<%= request.status %>"><%= request.status %></td>
-              <td><%= pretty_email request.user.email %></td>
-              <td><%= time_ago_in_words request.created_at %> ago</td>
-              <td><%= time_ago_in_words request.updated_at %> ago</td>
-              <td><%= link_to request.comments.count, request %></td>
-              <td><%= request.notes %></td>
+              <th scope="col">Title</th>
+              <th scope="col">Type</th>
+              <th scope="col">Status</th>
+              <th scope="col">Requestor</th>
+              <th scope="col">Requested</th>
+              <th scope="col">Updated</th>
+              <th scope="col">Comments</th>
+              <th scope="col">Notes</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @requests.each do |request| %>
+              <tr>
+                <td><%= link_to request.title, request_path(request) %></td>
+                <td><%= request.media_type %></td>
+                <td class="<%= request.status %>"><%= request.status %></td>
+                <td><%= pretty_email request.user.email %></td>
+                <td><%= time_ago_in_words request.created_at %> ago</td>
+                <td><%= time_ago_in_words request.updated_at %> ago</td>
+                <td><%= link_to request.comments.count, request %></td>
+                <td><%= request.notes %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="card-body">
       <%= link_to "↩ Back to dashboard", dashboard_url, class: "text-primary" %>
