@@ -4,10 +4,11 @@ require 'active_support/testing/time_helpers'
 class DashboardControllerTest < ActionDispatch::IntegrationTest
   setup do
     @request = create(:request)
+    @user = @request.user
   end
 
   test 'should get dashboard' do
-    sign_in @request.user
+    sign_in @user
     get dashboard_url
     assert_response :success
   end
@@ -18,15 +19,30 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'dashboard index should not show old filled requests' do
-    sign_in @request.user
+    sign_in @user
     @title = 'some old request'
 
     travel_to 1.month.ago
-    @blah = Request.create(title: @title, media_type: 'tv', status: 'filled')
+    @blah = @user.requests.new(title: @title, media_type: 'tv', status: 'filled').save
+    assert @blah
     travel_back
 
     get dashboard_url
     assert_response :success
     assert_not response.body.include?(@title)
+  end
+
+  test 'dashboard index should show old pending requests' do
+    sign_in @user
+    @title = 'some old request'
+
+    travel_to 1.month.ago
+    @blah = @user.requests.new(title: @title, media_type: 'tv', status: 'pending').save
+    assert @blah
+    travel_back
+
+    get dashboard_url
+    assert_response :success
+    assert response.body.include?(@title)
   end
 end
