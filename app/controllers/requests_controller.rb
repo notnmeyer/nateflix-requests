@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   before_action :check_admin, only: %i[destroy update edit]
 
   def index
-    @requests = Request.all
+    @requests = Request.all.order('created_at DESC')
   end
 
   def show
