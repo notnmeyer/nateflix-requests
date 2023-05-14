@@ -4,7 +4,9 @@
   </div>
 
   <div class="actions form-group">
-    <%= form.submit("Leave a comment", class: "btn btn-outline-primary w-50") %>
-    <%= form.submit("Leave a comment and reopen this request", class: "btn btn-outline-primary w-50", name: "reopen_request") %>
+    <%= form.submit("Leave a comment", class: "btn btn-primary") %>
+    <% if @request.status != "pending" %>
+      <%= form.submit("Leave a comment and reopen this request", class: "btn btn-outline-primary", name: "reopen_request") %>
+    <% end %>
   </div>
 <% end %>
