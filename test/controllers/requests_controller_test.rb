@@ -44,4 +44,11 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+
+  test 'should reopen request' do
+    sign_in @admin
+    patch request_url(@request), params: { reopen_request: true }
+    assert_redirected_to root_url
+    assert_equal 'pending', @request.reload.status
+  end
 end
