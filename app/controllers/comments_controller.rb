@@ -7,8 +7,13 @@ class CommentsController < ApplicationController
     @comment = @request.comments.new(comment_params)
     @comment.author = current_user
 
-    if @comment.save
-      redirect_to @request, notice: 'Comment was successfully added.'
+    @request.status = 'pending' if params[:reopen_request]
+
+    if @comment.save && @request.save
+      notice = 'Comment was successfully added.'
+      notice = "Comment added and request set to 'pending'." if params[:reopen_request]
+
+      redirect_to @request, notice:
     else
       render 'requests/show'
     end

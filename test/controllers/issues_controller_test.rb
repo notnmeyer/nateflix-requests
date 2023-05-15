@@ -5,6 +5,7 @@ class IssuesControllerTest < ActionDispatch::IntegrationTest
     @user = create(:user)
     @admin = create(:admin)
     @valid_attributes = { title: 'Ghostbusters', notes: 'german language', status: 'reported' }
+    @issue = create(:issue)
   end
 
   test 'should get index' do
@@ -23,28 +24,26 @@ class IssuesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show issue' do
     sign_in @user
-    get issue_url(issues(:one))
+    get issue_url(@issue)
     assert_response :success
   end
 
   test 'should get edit' do
     sign_in @admin
-    get edit_issue_url(issues(:one))
+    get edit_issue_url(@issue)
     assert_response :success
   end
 
   test 'should update issue' do
     sign_in @admin
-    issue = issues(:one)
-    patch issue_url(issue), params: { issue: @valid_attributes }
+    patch issue_url(@issue), params: { issue: @valid_attributes }
     assert_redirected_to root_url
   end
 
   test 'should destroy issue' do
     sign_in @admin
     assert_difference('Issue.count', -1) do
-      issue = issues(:one)
-      delete issue_url(issue)
+      delete issue_url(@issue)
     end
     assert_redirected_to root_url
   end
