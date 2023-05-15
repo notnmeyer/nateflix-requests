@@ -14,4 +14,16 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select 'p', /Test comment/
   end
+
+  test 'should reopen request' do
+    @req.update(status: 'filled')
+    post request_comments_url(@req), params: { comment: { content: 'Test comment' }, reopen_request: true }
+    assert_redirected_to request_path(@req)
+    follow_redirect!
+    assert_select 'p', /Test comment/
+    assert_select 'p', /Comment added and request set to 'pending'/
+
+    @req.reload
+    assert_equal 'pending', @req.status
+  end
 end
