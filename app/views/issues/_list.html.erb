@@ -8,8 +8,14 @@
           <br>
           <p class="notes"><%= issue.notes %></p>
         </div>
-        <div class="col-md-4">
-          <small class="text-muted"><%= time_ago_in_words(issue.created_at) %> ago</small>
+        <div class="col-md-6">
+          <ul>
+            <li class="text-muted">
+              <small>
+                Reported <%= time_ago_in_words(issue.created_at) %> ago by <%= pretty_email issue.user.email %>
+              </small>
+            </li>
+          </ul>
         </div>
         <% if user_signed_in? && current_user.admin? %>
         <div class="col-md-2">

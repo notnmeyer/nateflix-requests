@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :requests, dependent: :destroy
+  has_many :issues, dependent: :destroy
   has_many :authored_comments, class_name: 'Comment', foreign_key: 'author_id', dependent: :destroy
 
   validates :email, presence: true

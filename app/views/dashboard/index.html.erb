@@ -1,6 +1,8 @@
 <div id="requests" class="row">
   <div class="request-container card col-md-8">
-    <h3 class="card-header">Requests</h3>
+    <h3 class="card-header">
+      <%= link_to "Requests", :requests %>
+    </h3>
     <div class="card-body">
       <%= render partial: "requests/list" %>
       <small class="text-muted">
@@ -19,7 +21,9 @@
 
 <div id="issues" class="row">
   <div class="col-md-8 card issue-container">
-    <h3 class="card-header">Issues</h3>
+    <h3 class="card-header">
+      <%= link_to "Issues", :issues %>
+    </h3>
     <div class="card-body">
       <%= render partial: "issues/list" %>
     </div>

@@ -21,7 +21,8 @@ class IssuesController < ApplicationController
 
   # POST /issues or /issues.json
   def create
-    @issue = Issue.new(issue_params)
+    @user = Issue.find(current_user.id)
+    @issue = @user.issues.new(issue_params)
 
     respond_to do |format|
       if @issue.save

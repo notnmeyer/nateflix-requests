@@ -1,4 +1,6 @@
 class Issue < ApplicationRecord
+  belongs_to :user
+
   validates :title, presence: true
   validates :notes, length: { maximum: 500 }, allow_blank: true
 
