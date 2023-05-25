@@ -1,17 +1,31 @@
-<div id="<%= dom_id issue %>">
-  <p>
-    <strong>Title:</strong>
-    <%= issue.title %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= issue.notes %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= issue.status %>
-  </p>
-
+<div class="card col-md-12">
+  <h3 class="card-header"><%= issue.title %></h3>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Created</th>
+            <th scope="col">Reported by</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="<%= issue.status %>"><%= issue.status %></td>
+            <td><%= time_ago_in_words issue.created_at %></td>
+            <td><%= pretty_email issue.user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><%= issue.notes %></p>
+    <% if user_signed_in? && current_user.admin? %>
+      <div>
+        <%= link_to "Edit", edit_issue_path(issue) %> |
+        <%= link_to "Show", issue_path(issue) %> |
+        <%= link_to "Destroy", issue_path(issue), data: { turbo_method: :delete } %>
+      </div>
+    <% end %>
+  </div>
 </div>

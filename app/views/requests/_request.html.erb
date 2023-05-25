@@ -25,9 +25,9 @@
     </div>
     <% if user_signed_in? && current_user.admin? %>
       <div>
-        <%= link_to "Edit this request", edit_request_path(@request) %> |
-        <%= link_to "Back to requests", requests_path %>
-        <%= button_to "Destroy this request", @request, method: :delete, class: "btn btn-outline-primary" %>
+        <%= link_to "Edit", edit_request_path(@request) %> |
+        <%= link_to "Show", request_path(request) %> |
+        <%= link_to "Destroy this request", @request, data: { turbo_method: :delete } %>
       </div>
     <% end %>
   </div>
