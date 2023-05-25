@@ -1,14 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Issues</h1>
-
-<div id="issues">
-  <% @issues.each do |issue| %>
-    <%= render issue %>
-    <p>
-      <%= link_to "Show this issue", issue %>
-    </p>
-  <% end %>
+<div id="requests" class="row">
+  <div class="card-body">
+    <% @issues.each do |issue| %>
+      <%= render issue %>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <%= link_to "↩ Back to dashboard", dashboard_url, class: "text-primary" %>
+  </div>
 </div>
-
-<%= link_to "New issue", new_issue_path %>

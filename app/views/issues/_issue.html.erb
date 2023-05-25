@@ -22,9 +22,9 @@
     <p><%= issue.notes %></p>
     <% if user_signed_in? && current_user.admin? %>
       <div>
-        <%= link_to "Edit this issue", edit_issue_path(issue) %> |
-        <%= link_to "Back to issues", issues_path %>
-        <%= button_to "Destroy this issue", issue, method: :delete, class: "btn btn-outline-primary" %>
+        <%= link_to "Edit", edit_issue_path(issue) %> |
+        <%= link_to "Show", issue_path(issue) %> |
+        <%= link_to "Destroy", issue_path(issue), data: { turbo_method: :delete } %>
       </div>
     <% end %>
   </div>
