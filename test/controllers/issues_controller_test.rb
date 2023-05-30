@@ -47,4 +47,14 @@ class IssuesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+
+  test 'should create comment' do
+    sign_in @user
+    assert_difference('Comment.count') do
+      post issue_comments_url(@issue), params: { comment: { content: 'Test comment', issue_id: @issue } }
+    end
+    assert_redirected_to issue_path(@issue)
+    follow_redirect!
+    assert_select 'p', /Test comment/
+  end
 end
