@@ -3,7 +3,7 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-md-6">
-          <span class="title"><%= request.title %></span>
+          <span class="title"><%= link_to request.title, request %></span>
           (<%= request.media_type %>)
           (<span class="<%= request.status %>"><%= request.status %></span>)
           <p class="notes"><%= request.notes %></p>

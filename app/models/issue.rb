@@ -1,5 +1,6 @@
 class Issue < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :title, presence: true
   validates :notes, length: { maximum: 500 }, allow_blank: true

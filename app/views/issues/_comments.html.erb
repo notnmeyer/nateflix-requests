@@ -1,0 +1,16 @@
+<div class="card-body">
+  <div class="comment-container card col-md-12 border-0">
+    <div class="card-body">
+      <% if @comments.count > 0 %>
+        <% @comments.each do |comment| %>
+          <span class="text-primary"><%= pretty_email comment.author.email %></span>
+          <small class="text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small>
+          <p><%= comment.content %></p>
+          <hr>
+        <% end %>
+      <% else %>
+        <p>No comments yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
