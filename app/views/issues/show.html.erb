@@ -1,5 +1,14 @@
 <div class="row">
-  <div class="card col-md-12"
+  <div class="card col-md-12">
     <%= render @issue %>
+  </div>
+</div>
+<div class="row">
+  <div class="card col-md-12">
+    <h4 class="card-header">Comments</h4>
+    <%= render 'comments' %>
+  </div>
+  <div class="card col-md-12">
+    <%= render 'comment_form' %>
   </div>
 </div>

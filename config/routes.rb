@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :issues
+  resources :issues do
+    resources :comments, only: [:create]
+  end
+
   resources :requests do
     resources :comments, only: [:create]
   end

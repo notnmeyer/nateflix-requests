@@ -3,7 +3,7 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-md-6">
-          <span class="title"><%= issue.title %></span>
+          <span class="title"><%= link_to issue.title, issue %></span>
           (<span class="<%= issue.status %>"><%= issue.status %></span>)
           <br>
           <p class="notes"><%= issue.notes %></p>
