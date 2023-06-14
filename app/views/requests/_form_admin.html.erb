@@ -16,7 +16,7 @@
 
   <div class="field form-group">
     <%= form.label :status %>
-    <%= form.select :status, ["pending", "filled"], {}, {selected: @request.status, class: "form-select"} %>
+    <%= form.select :status, ["pending", "filled", "wontfill"], {}, {selected: @request.status, class: "form-select"} %>
   </div>
 
   <div class="actions form-group">
