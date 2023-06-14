@@ -1,0 +1,12 @@
+<div id="requests" class="row">
+  <div class="request-container card col-md-4">
+    <h3 class="card-header">Most Requestingest Users</h3>
+    <div class="card-body">
+      <ol>
+        <% @users.each do |user| %>
+          <li><%= pretty_email user.email %>: <strong><%= user.requests.count %></strong> requests</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

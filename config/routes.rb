@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   end
 
   root 'dashboard#index'
+
   get '/', to: 'dashboard#index', as: 'dashboard'
+  get '/stats', to: 'stats#index', as: 'stats'
 end
