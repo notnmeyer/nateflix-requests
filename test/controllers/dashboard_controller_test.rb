@@ -1,8 +1,13 @@
 require 'test_helper'
 require 'active_support/testing/time_helpers'
 
+require_relative '../helpers/aws_helpers'
+
 class DashboardControllerTest < ActionDispatch::IntegrationTest
+  include AWSHelpers
+
   setup do
+    stub_sns_client
     @request = create(:request)
     @user = @request.user
   end
