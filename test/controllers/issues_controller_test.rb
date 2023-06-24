@@ -1,7 +1,12 @@
 require 'test_helper'
 
+require_relative '../helpers/aws_helpers'
+
 class IssuesControllerTest < ActionDispatch::IntegrationTest
+  include AWSHelpers
+
   setup do
+    stub_sns_client
     @user = create(:user)
     @admin = create(:admin)
     @valid_attributes = { title: 'Ghostbusters', notes: 'german language', status: 'reported' }
