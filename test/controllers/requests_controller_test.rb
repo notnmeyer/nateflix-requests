@@ -1,7 +1,12 @@
 require 'test_helper'
 
+require_relative '../helpers/aws_helpers'
+
 class RequestsControllerTest < ActionDispatch::IntegrationTest
+  include AWSHelpers
+
   setup do
+    stub_sns_client
     @request = create(:request)
     sign_in @request.user
     @admin = create(:admin)
