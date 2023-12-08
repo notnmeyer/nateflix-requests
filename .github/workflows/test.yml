@@ -1,16 +1,12 @@
 name: test
 on: push
 
-env:
-  AWS_REGION: buttz
-  AWS_ACCESS_KEY_ID: blah
-  AWS_SECRET_ACCESS_KEY: blah
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: cp .env.example .env
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.4
