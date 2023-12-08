@@ -6,5 +6,8 @@ pkgs.mkShell {
     ruby
     ruby-lsp   
     rubocop
+
+    libyaml
+    libsass
   ];
 }
