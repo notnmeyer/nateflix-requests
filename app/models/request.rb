@@ -14,6 +14,6 @@ class Request < ApplicationRecord
   private
 
   def generate_notification_message
-    "New Request: #{title} (#{media_type})"
+    "New Request from #{user}: #{title} (#{media_type})"
   end
 end
