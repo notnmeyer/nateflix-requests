@@ -1,6 +1,9 @@
 name: test
 on: push
 
+env:
+  AWS_REGION: buttz
+
 jobs:
   test:
     runs-on: ubuntu-latest
