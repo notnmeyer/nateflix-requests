@@ -3,6 +3,8 @@ on: push
 
 env:
   AWS_REGION: buttz
+  AWS_ACCESS_KEY_ID: blah
+  AWS_SECRET_ACCESS_KEY: blah
 
 jobs:
   test:
