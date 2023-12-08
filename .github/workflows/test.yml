@@ -1,0 +1,8 @@
+name: test
+on: push
+
+steps:
+  - uses: actions/checkout@v4
+  - uses: ruby/setup-ruby@v1
+  - run: bundle install
+  - run: bundle exec rails test
