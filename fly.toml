@@ -44,3 +44,4 @@ processes = []
 [mounts]
   source="nateflix_requests"
   destination="/mnt/nateflix_requests"
+swap_size_mb = 512

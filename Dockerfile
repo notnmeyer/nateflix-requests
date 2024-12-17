@@ -18,13 +18,18 @@ ENV RAILS_ENV="production" \
 RUN gem update --system --no-document && \
     gem install -N bundler
 
+# Install packages needed to install nodejs
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y nodejs npm && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential pkg-config nodejs
+    apt-get install --no-install-recommends -y build-essential pkg-config
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -47,19 +52,21 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y libsqlite3-0 nodejs && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Run and own the application files as a non-root user for security
-RUN useradd rails --home /rails --shell /bin/bash
-USER rails:rails
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build --chown=rails:rails /rails /rails
+COPY --from=build /rails /rails
+
+# Run and own only the runtime files as a non-root user for security
+RUN useradd rails --create-home --shell /bin/bash && \
+    mkdir /data && \
+    chown -R rails:rails db log storage tmp /data
 
 # Deployment options
-ENV RAILS_LOG_TO_STDOUT="1" \
+ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
+    RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true"
 
 # Entrypoint prepares the database.
@@ -67,4 +74,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
+VOLUME /data
 CMD ["./bin/rails", "server"]
