@@ -1,4 +1,4 @@
 [tasks.ssh]
 cmds = [
-  "flyctl ssh console -a nateflix-requests"
+  "flyctl ssh console"
 ]
